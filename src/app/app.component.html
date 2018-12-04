@@ -1,1 +1,9 @@
-<h3> {{ title }}</h3>
+<div *ngFor="let word of words">
+  <!-- <app-word [wordInfo]="word"></app-word> -->
+  <div class="{{word.isMemorized ? 'btn btn-success' : 'btn btn-danger'}}">{{word.en}} </div>
+  <p> {{word.vn}} </p>
+  <button class="btn btn-danger" (click)="removeWord(word._id)"> REMOVE </button>
+  <button class="btn btn-success" (click)="toggleWord(word._id)"> TOGGLE </button>
+  <br>
+  <br>
+</div>
