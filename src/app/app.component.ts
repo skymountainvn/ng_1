@@ -7,7 +7,8 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = "app123"
+  txtVn="";
+  txtEn="";
   words: Word[] = [  // thêm Word[] để quét theo interface Word sai syntax thì sẽ báo
     { en: 'One', vn: 'Mot', isMemorized: true, _id: 'abcd1' },
     { en: 'Two', vn: 'Hai', isMemorized: false, _id: 'abcd2' },
@@ -23,6 +24,15 @@ export class AppComponent {
   toggleWord(_id: string) {
     const word = this.words.find(word => word._id === _id);
     word.isMemorized = !word.isMemorized;
+  }
+
+  addWord() {
+    const {txtEn, txtVn} = this;
+    this.words.unshift(
+      {en: txtEn, vn:txtVn , isMemorized: false, _id: Math.random + " "}
+    );
+    this.txtEn ="";
+    this.txtVn ="";
   }
 }
 

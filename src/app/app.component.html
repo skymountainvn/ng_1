@@ -1,9 +1,23 @@
-<div *ngFor="let word of words">
-  <!-- <app-word [wordInfo]="word"></app-word> -->
-  <div class="{{word.isMemorized ? 'btn btn-success' : 'btn btn-danger'}}">{{word.en}} </div>
-  <p> {{word.vn}} </p>
-  <button class="btn btn-danger" (click)="removeWord(word._id)"> REMOVE </button>
-  <button class="btn btn-success" (click)="toggleWord(word._id)"> TOGGLE </button>
+
+<div class="container">
   <br>
-  <br>
+  <div class="form-group" style = "width:200px"> 
+    <input class="form-control" placeholder="ENGLISH" [(ngModel)]="txtEn">
+    <br>
+    <input class="form-control" placeholder="VIETNAMESE" [(ngModel)]="txtVn">
+    <br>
+    <button class="btn btn-success" (click)="addWord(txtEn.value, txtVn.value)"> ADD WORD </button>
+    <br>
+    <br>
+    <div *ngFor="let word of words">
+        <!-- <app-word [wordInfo]="word"></app-word> -->
+        <div class="{{word.isMemorized ? 'btn btn-success' : 'btn btn-danger'}}">{{word.en}} </div>
+        <p> {{word.vn}} </p>
+        <button class="btn btn-danger" (click)="removeWord(word._id)"> REMOVE </button>
+        <button class="btn btn-success" (click)="toggleWord(word._id)"> TOGGLE </button>
+        <br>
+        <br>
+        </div>
+  </div>
+
 </div>
