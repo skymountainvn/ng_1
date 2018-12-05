@@ -9,12 +9,24 @@ import { Component } from '@angular/core';
 export class AppComponent {
   txtVn="";
   txtEn="";
+   
   words: Word[] = [  // thêm Word[] để quét theo interface Word sai syntax thì sẽ báo
     { en: 'One', vn: 'Mot', isMemorized: true, _id: 'abcd1' },
     { en: 'Two', vn: 'Hai', isMemorized: false, _id: 'abcd2' },
     { en: 'Three', vn: 'Ba', isMemorized: false, _id: 'abcd3' },
     { en: 'Four', vn: 'Bon', isMemorized: true, _id: 'abcd4' }
   ];
+
+  memorizedStyle = {
+    fontWeight: 500,
+    color: 'green'
+  }
+
+  forgotStyle = {
+    fontWeight: 900,
+    color: 'red'
+  }
+
 
   removeWord (_id: string) {
     const index = this.words.findIndex(word => word._id === _id)
@@ -26,13 +38,8 @@ export class AppComponent {
     word.isMemorized = !word.isMemorized;
   }
 
-  addWord() {
-    const {txtEn, txtVn} = this;
-    this.words.unshift(
-      {en: txtEn, vn:txtVn , isMemorized: false, _id: Math.random + " "}
-    );
-    this.txtEn ="";
-    this.txtVn ="";
+  onAddWord(word: Word) {
+    this.words.unshift(word);
   }
 }
 

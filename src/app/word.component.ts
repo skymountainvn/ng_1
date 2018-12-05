@@ -1,26 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-word',
   template:` 
-    <div> 
-        <h4 style="color:red" *ngIf="!isMemorized"> {{ en }} </h4>
-        <h4 style="color:green" *ngIf="isMemorized"> {{ en }} </h4>
-        <p> {{ vn }} </p>
-        <button 
-            class="{{isMemorized ? 'btn btn-success' : 'btn btn-danger' }}"  
-            (click)="toggleIsMemorized();"
-        > 
-            BUTTON TOGGLE
-        </button>
-    </div>`
+  <p class="wordInfo.isMemorized ? 'text-success' : 'text-danger'"> {{wordInfo.en}}  <p>
+  <p> {{wordInfo.vn}} </p>
+  <button class="btn btn-danger"> REMOVE </button>
+  <button class="btn btn-success"> TOGGLE </button>
+  <br>
+  `
   
 })
 export class WordComponent {
-    en= 'one';
-    vn= 'một';
-    isMemorized= false;
-    // en: string;
-    // vn: string;
-    // isMemorized: boolean;
+    @Input() wordInfo: any ;
+
 }
