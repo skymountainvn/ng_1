@@ -28,16 +28,16 @@ export class AppComponent {
   }
 
 
-  removeWord (_id: string) {
+  onRemoveWord (_id: string) {
     const index = this.words.findIndex(word => word._id === _id)
     this.words.splice(index,1) // xóa từ vi trí index di 1 đơn vị
   }
 
-  toggleWord(_id: string) {
+  onToggleWord(_id: string) {
     const word = this.words.find(word => word._id === _id);
     word.isMemorized = !word.isMemorized;
   }
-
+  
   onAddWord(word: Word) {
     this.words.unshift(word);
   }
