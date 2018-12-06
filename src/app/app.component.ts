@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Word } from './types';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,8 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  txtVn="";
-  txtEn="";
-   
+
+  filterStatus = 'SHOW_ALL';
   words: Word[] = [  // thêm Word[] để quét theo interface Word sai syntax thì sẽ báo
     { en: 'One', vn: 'Mot', isMemorized: true, _id: 'abcd1' },
     { en: 'Two', vn: 'Hai', isMemorized: false, _id: 'abcd2' },
@@ -41,11 +41,17 @@ export class AppComponent {
   onAddWord(word: Word) {
     this.words.unshift(word);
   }
+
+  getFilteredWord() {
+    return this.words.filter(word => {
+      if (this.filterStatus === 'SHOW_ALL') return true;
+      if (this.filterStatus === 'SHOW_FORGOT') return !word.isMemorized;
+      return word.isMemorized;
+    });
+  }
+
+  onChangeFilterStatus(newStatus: string) {
+    this.filterStatus = newStatus;
+  }
 }
 
-interface Word {
-  _id: string;
-  en: string;
-  vn: string;
-  isMemorized: boolean;
-}
