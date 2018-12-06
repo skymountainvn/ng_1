@@ -10,7 +10,7 @@ import { WordFormComponent } from './word-form.component';
 
 import { shouldShowFormReducer } from './ngrx/shouldShowFormReducer';
 import { wordsReducer } from './ngrx/wordsReducer';
-
+import { filterStatusReducer } from './ngrx/filterStatusReducer';
 
 // import { from } from 'rxjs';
 
@@ -26,7 +26,8 @@ import { wordsReducer } from './ngrx/wordsReducer';
     FormsModule,
     StoreModule.forRoot({
       words : wordsReducer,
-      shouldShowForm : shouldShowFormReducer
+      shouldShowForm : shouldShowFormReducer,
+      filterStatus : filterStatusReducer
     }),
   ],
   providers: [],
