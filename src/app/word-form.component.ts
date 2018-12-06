@@ -13,7 +13,7 @@ import { Word } from './types';
             <br>
             <input class="form-control" placeholder="VIETNAMESE" [(ngModel)]="txtVn">
             <br>
-            <button class="btn btn-success form-control" (click)="addWord();"> ADD WORD </button>
+            <button class="btn btn-success form-control" > ADD WORD </button>
             <br>
       
             <button class="btn btn-danger form-control"  > CANCEL </button>
@@ -29,22 +29,5 @@ export class WordFormComponent {
     txtVn="";
     txtEn="";
 
-
-    @Output() onAddWord = new EventEmitter<Word>();
-    toggleForm () {
-        this.isShowForm=!this.isShowForm;
-    }
-
-    addWord() {
-        const word: Word = { 
-        _id: Math.random() + '',
-        en: this.txtEn,
-        vn: this.txtVn,
-        isMemorized: true
-    };
-        this.onAddWord.emit(word);
-        this.txtEn = '';
-        this.txtVn = '';
-        this.isShowForm = false;
-    }
+    
 }

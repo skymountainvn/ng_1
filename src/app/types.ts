@@ -4,3 +4,9 @@ export interface Word {
     vn: string;
     isMemorized: boolean;
 }
+
+
+export interface AppState {
+    words : Word[],
+    shouldShowForm : boolean;
+}

@@ -1,16 +1,12 @@
 <div class="container">
     <br>
-    <app-word-form (onAddWord)="onAddWord($event)"></app-word-form>
-    <app-word-filter
-      [filterStatus]="filterStatus"
-      (onChangeFilterStatus)="onChangeFilterStatus($event)"
-    ></app-word-filter>
+    <app-word-form ></app-word-form>
 
-    <div *ngFor="let word of getFilteredWord()">
+
+    <div *ngFor="let word of (words | async)">
       <app-word
         [wordInfo]="word"
-        (onRemoveWord)="onRemoveWord($event)"
-        (onToggleWord)="onToggleWord($event)"></app-word>
+      ></app-word>
     </div>
 
 </div>
