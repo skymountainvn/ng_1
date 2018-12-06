@@ -5,6 +5,6 @@ import { Word } from '../types';
     { en: 'Three', vn: 'Ba', isMemorized: false, _id: 'abcd3' },
     { en: 'Four', vn: 'Bon', isMemorized: true, _id: 'abcd4' }
 ]
- export function wordsReducer(state = defaultWords, action): Word[] {
+export function wordsReducer(state = defaultWords, action): Word[] {
     return state;
 }

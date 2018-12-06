@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { WordComponent } from './word.component';
 import { WordFormComponent } from './word-form.component';
 
-import { shouldShowFormReducer } from './shouldShowFormReducer';
+import { shouldShowFormReducer } from './ngrx/shouldShowFormReducer';
 import { wordsReducer } from './ngrx/wordsReducer';
 
 
