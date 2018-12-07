@@ -7,6 +7,8 @@ import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { WordComponent } from './word.component';
 import { WordFormComponent } from './word-form.component';
+import { WordFilterComponent } from './word-filter.component';
+
 
 import { shouldShowFormReducer } from './ngrx/shouldShowFormReducer';
 import { wordsReducer } from './ngrx/wordsReducer';
@@ -18,7 +20,8 @@ import { filterStatusReducer } from './ngrx/filterStatusReducer';
   declarations: [
     AppComponent,
     WordFormComponent,
-    WordComponent
+    WordComponent,
+    WordFilterComponent
    
   ],
   imports: [

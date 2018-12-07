@@ -1,29 +1,35 @@
-// thanh roll chon SHOW ALL _ SHOW FORGOT _ SHOW MEMORIZED
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Word, AppState } from './types';
+
+
 
 @Component({
-  selector: 'app-word-filter',
-  template:`            
-    <select
-         class="form-control"
+    selector: 'app-word-filter',
+    template: `
+        <select
+        class="form-control"
         style="width: 200px"
-        [(ngModel)]="filterStatus"
-        (change)="onChange($event)"
-    >       
+        value="{{ filterStatus | async }}"
+        (change)="onChange($event);">
+        
         <option value="SHOW_ALL">SHOW ALL</option>
         <option value="SHOW_MEMORIZED">SHOW MEMORIZED</option>
         <option value="SHOW_FORGOT">SHOW FORGOT</option>
-    </select>
-  `
-  
+</select>
+    `
 })
+export class WordFilterComponent {
+    filterStatus: Observable<string>;
+    constructor(private store: Store<AppState>) {
+        this.filterStatus = this.store.select('filterStatus');
+    }
 
-export class WordFilterComponent{
-    @Input() filterStatus: string;
-    @Output() onChangeFilterStatus = new EventEmitter();
-    onChange(evt) { 
-        console.log(evt);
-        const newFilterStatus = evt.target.value;
-        this.onChangeFilterStatus.emit(newFilterStatus);
+    onChange(evt) {
+        this.store.dispatch({
+            type: 'SET_FILTER_STATUS',
+            filterStatus: evt.target.value
+        });
     }
 }
