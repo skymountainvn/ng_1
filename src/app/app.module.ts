@@ -13,7 +13,7 @@ import { WordFilterComponent } from './word-filter.component';
 import { shouldShowFormReducer } from './ngrx/shouldShowFormReducer';
 import { wordsReducer } from './ngrx/wordsReducer';
 import { filterStatusReducer } from './ngrx/filterStatusReducer';
-
+import { WordService } from './word.service';
 // import { from } from 'rxjs';
 
 @NgModule({
@@ -21,8 +21,7 @@ import { filterStatusReducer } from './ngrx/filterStatusReducer';
     AppComponent,
     WordFormComponent,
     WordComponent,
-    WordFilterComponent
-   
+    WordFilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +32,7 @@ import { filterStatusReducer } from './ngrx/filterStatusReducer';
       filterStatus : filterStatusReducer
     }),
   ],
-  providers: [],
+  providers: [WordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
