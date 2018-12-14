@@ -14,6 +14,8 @@ import { shouldShowFormReducer } from './ngrx/shouldShowFormReducer';
 import { wordsReducer } from './ngrx/wordsReducer';
 import { filterStatusReducer } from './ngrx/filterStatusReducer';
 import { WordService } from './word.service';
+import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
+import { Http, HttpModule } from '@angular/http';
 // import { from } from 'rxjs';
 
 @NgModule({
@@ -22,10 +24,12 @@ import { WordService } from './word.service';
     WordFormComponent,
     WordComponent,
     WordFilterComponent,
+    SignInFormComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     StoreModule.forRoot({
       words : wordsReducer,
       shouldShowForm : shouldShowFormReducer,
