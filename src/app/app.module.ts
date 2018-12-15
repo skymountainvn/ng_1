@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms"
+import { FormsModule, ReactiveFormsModule } from "@angular/forms"
 import { StoreModule } from '@ngrx/store';
-
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { WordComponent } from './word.component';
@@ -13,9 +13,10 @@ import { WordFilterComponent } from './word-filter.component';
 import { shouldShowFormReducer } from './ngrx/shouldShowFormReducer';
 import { wordsReducer } from './ngrx/wordsReducer';
 import { filterStatusReducer } from './ngrx/filterStatusReducer';
+
 import { WordService } from './word.service';
 import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
-import { Http, HttpModule } from '@angular/http';
+
 // import { from } from 'rxjs';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { Http, HttpModule } from '@angular/http';
     BrowserModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({
       words : wordsReducer,
       shouldShowForm : shouldShowFormReducer,
