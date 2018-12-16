@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms"
 import { StoreModule } from '@ngrx/store';
 import { HttpModule } from '@angular/http';
+import { RouterModule , Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { WordComponent } from './word.component';
@@ -22,6 +23,10 @@ import { WordListComponent } from './word-list.component';
 import { WordDetailComponent } from './word-detail.component';
 
 // import { from } from 'rxjs';
+const RoutesConfig: Routes = [
+  { path: '/list', component: WordListComponent},
+  { path: '/detail', component: WordDetailComponent}
+];
 
 @NgModule({
   declarations: [
@@ -44,6 +49,9 @@ import { WordDetailComponent } from './word-detail.component';
       shouldShowForm : shouldShowFormReducer,
       filterStatus : filterStatusReducer
     }),
+    RouterModule.forRoot(
+      RoutesConfig
+    ),
   ],
   providers: [WordService],
   bootstrap: [AppComponent]
