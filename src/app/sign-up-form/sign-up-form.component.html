@@ -25,17 +25,18 @@
         placeholder="Enter your Password" 
         formControlName="rePassword">
     </div>
-    <div *ngIf="shouldShowPasswordWarning">
+    <div *ngIf="formSignUp.errors?.err">
       <p class='text-danger'> *Password không trùng</p>
     </div>
     <div *ngIf="getShouldShowEmailWarning('rePassword')">
       <p class='text-danger'> *Password không được bỏ trống</p>
     </div>
 
-    <button class="btn btn-success" [disabled]="!(formSignUp.valid && passwordMatched)">
+    <button class="btn btn-success" [disabled]="!(formSignUp.valid )">
       SIGN UP
     </button>
   </div>
 </form>
 <pre>{{ formSignUp.value | json }}</pre>
 <pre>{{ formSignUp.valid | json }}</pre>
+<pre>{{ formSignUp.errors | json }}</pre>
