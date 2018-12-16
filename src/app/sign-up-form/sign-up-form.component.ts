@@ -16,7 +16,7 @@ export class SignUpFormComponent implements OnInit {
       // email: ['', Validators.email && Validators.required],
       email: ['', gmail],
       password: ['', Validators.required] ,
-      rePassword: []
+      rePassword: ['', Validators.required] 
     });
   }
 
@@ -28,6 +28,18 @@ export class SignUpFormComponent implements OnInit {
     // k nhập vào thi báo đỏ
     const emailControl = this.formSignUp.get(controlName);
     return emailControl.invalid && emailControl.touched;
+  }
+
+  get shouldShowPasswordWarning() {
+    const pw1= this.formSignUp.get('password');
+    const pw2= this.formSignUp.get('rePassword');
+    return pw1.touched && pw1.valid && pw2.dirty && pw1.value !== pw2.value 
+  }
+
+  get passwordMatched() {
+    const pw1= this.formSignUp.get('password');
+    const pw2= this.formSignUp.get('rePassword');
+    return pw1.value === pw2.value;
   }
 }
 

@@ -13,18 +13,26 @@
       <input type ="password" class="form-control" placeholder="Enter your Password" formControlName="password">
     </div>
     <div *ngIf="getShouldShowEmailWarning('password')">
-      <p class='text-danger'> *Password không đúng định dạng</p>
+      <p class='text-danger'> *Password không được bỏ trống</p>
     </div>
 
     <div class="form-group">
-      <label for=""> Password :  </label>
-      <input type ="password" class="form-control" placeholder="Enter your Password" formControlName="rePassword">
+      <label for=""> Re-enter Password :  </label>
+      <input type ="password" 
+        [class.warning]="shouldShowPasswordWarning "  
+        [class.warning]="getShouldShowEmailWarning('rePassword')" 
+        class="form-control" 
+        placeholder="Enter your Password" 
+        formControlName="rePassword">
+    </div>
+    <div *ngIf="shouldShowPasswordWarning">
+      <p class='text-danger'> *Password không trùng</p>
     </div>
     <div *ngIf="getShouldShowEmailWarning('rePassword')">
-      <p class='text-danger'> *Password không đúng định dạng</p>
+      <p class='text-danger'> *Password không được bỏ trống</p>
     </div>
 
-    <button class="btn btn-success" [disabled]="!formSignUp.valid">
+    <button class="btn btn-success" [disabled]="!(formSignUp.valid && passwordMatched)">
       SIGN UP
     </button>
   </div>
