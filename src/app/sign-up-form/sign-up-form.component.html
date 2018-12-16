@@ -1,0 +1,33 @@
+<form class="form-group" style="margin: 10px" [formGroup]="formSignUp" (ngSubmit)="onSubmitForm()"> 
+  <div class="form-group">
+    <div class="form-group">
+      <label for=""> Email : </label>
+      <input class="form-control" placeholder="Enter your Email" formControlName="email">
+    </div>
+    <div *ngIf="getShouldShowEmailWarning('email')">
+      <p class='text-danger'> *Email không đúng định dạng</p>
+    </div>
+
+    <div class="form-group">
+      <label for=""> Password :  </label>
+      <input type ="password" class="form-control" placeholder="Enter your Password" formControlName="password">
+    </div>
+    <div *ngIf="getShouldShowEmailWarning('password')">
+      <p class='text-danger'> *Password không đúng định dạng</p>
+    </div>
+
+    <div class="form-group">
+      <label for=""> Password :  </label>
+      <input type ="password" class="form-control" placeholder="Enter your Password" formControlName="rePassword">
+    </div>
+    <div *ngIf="getShouldShowEmailWarning('rePassword')">
+      <p class='text-danger'> *Password không đúng định dạng</p>
+    </div>
+
+    <button class="btn btn-success" [disabled]="!formSignUp.valid">
+      SIGN UP
+    </button>
+  </div>
+</form>
+<pre>{{ formSignUp.value | json }}</pre>
+<pre>{{ formSignUp.valid | json }}</pre>

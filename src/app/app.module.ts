@@ -16,6 +16,7 @@ import { filterStatusReducer } from './ngrx/filterStatusReducer';
 
 import { WordService } from './word.service';
 import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
+import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 
 // import { from } from 'rxjs';
 
@@ -26,6 +27,7 @@ import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
     WordComponent,
     WordFilterComponent,
     SignInFormComponent,
+    SignUpFormComponent,
   ],
   imports: [
     BrowserModule,
