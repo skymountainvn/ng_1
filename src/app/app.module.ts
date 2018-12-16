@@ -18,6 +18,9 @@ import { WordService } from './word.service';
 import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 
+import { WordListComponent } from './word-list.component';
+import { WordDetailComponent } from './word-detail.component';
+
 // import { from } from 'rxjs';
 
 @NgModule({
@@ -28,6 +31,8 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
     WordFilterComponent,
     SignInFormComponent,
     SignUpFormComponent,
+    WordListComponent,
+    WordDetailComponent
   ],
   imports: [
     BrowserModule,
