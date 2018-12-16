@@ -21,11 +21,13 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 
 import { WordListComponent } from './word-list.component';
 import { WordDetailComponent } from './word-detail.component';
-
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 // import { from } from 'rxjs';
 const RoutesConfig: Routes = [
-  { path: '/list', component: WordListComponent},
-  { path: '/detail', component: WordDetailComponent}
+  { path: 'list', component: WordListComponent},
+  { path: 'detail/:_id', component: WordDetailComponent},
+  { path: '', redirectTo: '/list',pathMatch: 'full'},
+  { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
@@ -37,7 +39,8 @@ const RoutesConfig: Routes = [
     SignInFormComponent,
     SignUpFormComponent,
     WordListComponent,
-    WordDetailComponent
+    WordDetailComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

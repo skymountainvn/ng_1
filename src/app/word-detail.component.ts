@@ -4,6 +4,4 @@ import {Component} from '@angular/core';
     template:  ` <p> WORD DETAIL </p>`
 })
 
-export class WordDetailComponent {
-
-}
+export class WordDetailComponent {}

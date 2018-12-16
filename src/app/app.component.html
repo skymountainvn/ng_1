@@ -18,8 +18,21 @@
 
 </div> -->
 
-<div class="container">
+<!-- <div class="container">
   <app-sign-up-form> 
     
   </app-sign-up-form>
-</div>
+</div> -->
+<router-outlet></router-outlet>
+<nav>
+  <a [routerLink]="['/']" routerLinkActive="active"> HOME </a>
+  <a [routerLink]="['/list']" routerLinkActive="active"> LIST </a>
+  <li *ngFor="let person of people">
+      <a  
+        routerLink="['/detail/{{person._id}}']" 
+        routerLinkActive="active"> 
+        {{person.name}}
+      </a>
+  </li>
+
+</nav>

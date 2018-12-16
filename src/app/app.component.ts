@@ -3,7 +3,7 @@ import { Word , AppState } from './types';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { WordService } from './word.service';
-
+import { Person} from './person'
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,7 @@ import { WordService } from './word.service';
 export class AppComponent {
   words: Word[];
   filterStatus: string;
+  people = Person.people;
   constructor(
     private store: Store<AppState>,
     private wordService: WordService) {
