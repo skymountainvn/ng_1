@@ -18,4 +18,37 @@ export class WordService {
             this.store.dispatch({ type: 'SET_WORDS', words: resJson.words });
         });
     }
+
+    addWord(en: string, vn: string) {
+        const URL = 'http://localhost:3000/word';
+        return this.http.post(URL, { en, vn })
+        .toPromise()
+        .then(response => response.json())
+        .then(resJson => {
+            if (!resJson.success) return;
+            this.store.dispatch({ type: 'ADD_WORD', word: resJson.word });
+        });
+    }
+
+    removeWord(_id: string) {
+        const URL = 'http://localhost:3000/word';
+        return this.http.delete(`${URL}/${_id}`)
+        .toPromise()
+        .then(response => response.json())
+        .then(resJson => {
+            if (!resJson.success) return;
+            this.store.dispatch({ type: 'REMOVE_WORD', _id });
+        });
+    }
+
+    toggleWord(_id: string, isMemorized) {
+        const URL = 'http://localhost:3000/word';
+        return this.http.put(`${URL}/${_id}`, { isMemorized })
+        .toPromise()
+        .then(response => response.json())
+        .then(resJson => {
+            if (!resJson.success) return;
+            this.store.dispatch({ type: 'TOGGLE_WORD', _id });
+        });
+    }
 }

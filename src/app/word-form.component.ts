@@ -2,13 +2,19 @@ import { Component} from '@angular/core';
 import { AppState, Word } from './types';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-
+import { WordService} from './word.service'
 
 @Component({
   selector: 'app-word-form',
   template:` 
     <div class="form-group" style = "width:200px"> 
-    <button class="btn btn-success form-control" *ngIf="!(shouldShowForm | async)" (click)="showForm();" > ADD WORD </button>
+    <button 
+        class="btn btn-success form-control" 
+        *ngIf="!(shouldShowForm | async)" 
+        (click)="showForm();"
+    > 
+        ADD WORD 
+    </button>
     <br>
     <br>
         <div *ngIf="shouldShowForm | async">
@@ -16,10 +22,20 @@ import { Store } from '@ngrx/store';
             <br>
             <input class="form-control" placeholder="VIETNAMESE" [(ngModel)]="txtVn">
             <br>
-            <button class="btn btn-success form-control" (click)="addWord();" > ADD WORD </button>
+            <button 
+                class="btn btn-success form-control" 
+                (click)="addWord();" 
+            > 
+                ADD WORD
+            </button>
             <br>
       
-            <button class="btn btn-danger form-control"  (click)="hideForm();" > CANCEL </button>
+            <button 
+                class="btn btn-danger form-control"  
+                (click)="hideForm();" 
+            > 
+                CANCEL 
+            </button>
         </div>
     </div>
  
@@ -27,26 +43,19 @@ import { Store } from '@ngrx/store';
 })
 
 export class WordFormComponent {
-
     shouldShowForm: Observable<boolean>;
     
-    constructor(private store: Store<AppState>){
-        this.shouldShowForm = this.store.select('shouldShowForm');
+    constructor(private store: Store<AppState>, private wordService: WordService){
+      this.shouldShowForm = this.store.select('shouldShowForm');
     }
+    
     txtEn = '';
     txtVn = '';
     showForm() { this.store.dispatch({ type: 'SHOW_FORM' }); }
     hideForm() { this.store.dispatch({ type: 'HIDE_FORM' }); }
+  
     addWord() {
-        const { txtEn, txtVn } = this;
-        const word: Word = {
-        _id: Math.random() + '',
-        en: txtEn,
-        vn: txtVn,
-        isMemorized: false
-        };
-        this.store.dispatch({ type: 'ADD_WORD', word });
-        this.txtEn = '';
-        this.txtVn = '';
+      const { txtEn, txtVn } = this;
+      this.wordService.addWord(txtEn, txtVn);
     }
-  }
+}

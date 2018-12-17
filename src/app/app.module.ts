@@ -52,9 +52,7 @@ const RoutesConfig: Routes = [
       shouldShowForm : shouldShowFormReducer,
       filterStatus : filterStatusReducer
     }),
-    RouterModule.forRoot(
-      RoutesConfig
-    ),
+    RouterModule.forRoot(RoutesConfig)
   ],
   providers: [WordService],
   bootstrap: [AppComponent]
